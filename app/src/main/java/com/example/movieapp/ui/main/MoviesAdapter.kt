@@ -13,7 +13,7 @@ import com.example.movieapp.model.Movie
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>() {
 
-    var items: MutableList<Movie> = mutableListOf(Movie(0,"","","","", 0.0,0))
+    var items: MutableList<Movie> = mutableListOf(Movie(0, "", "", "", "", 0.0, 0))
 
     public fun addItems(toAdd: MutableList<Movie>) = items.addAll(toAdd)
 
