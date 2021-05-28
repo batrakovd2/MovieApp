@@ -8,4 +8,6 @@
     <string name="hello_favorite_fragment">Hello favorite fragment</string>
     <string name="hello_rating_fragment">Hello rating fragment</string>
     <string name="temptext_movie_1">Movie 1</string>
+    <string name="error">Error</string>
+    <string name="movie_string">Movies</string>
 </resources>
