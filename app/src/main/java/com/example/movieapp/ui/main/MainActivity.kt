@@ -5,8 +5,12 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.movieapp.R
 import com.example.movieapp.databinding.ActivityMainBinding
+import com.example.movieapp.router.MainRouter
+import com.example.movieapp.router.RouterHolder
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), RouterHolder {
+
+    override val router = MainRouter(this)
 
     private lateinit var binding: ActivityMainBinding
 
@@ -16,21 +20,19 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frame_container, MainFragment.newInstance())
-                .commitNow()
+            router.openMovieList()
         }
 
         binding.bottomNav.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-                    addFragment(MainFragment.newInstance(), "MainFragment")
+                    router.openMovieList()
                 }
                 R.id.navigation_favorites -> {
-                    addFragment(FavoriteFragment.newInstance(), "FavoriteFragment")
+                    router.openFavoriteList()
                 }
                 R.id.navigation_ratings -> {
-                    addFragment(RatingFragment.newInstance(), "RatingFragment")
+                    router.openRatingeList()
                 }
             }
             true
@@ -39,11 +41,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun addFragment(fragment: Fragment, tag: String) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.frame_container, fragment, tag)
-            .commit()
-    }
+
 
 
 }
